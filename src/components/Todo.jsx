@@ -1,10 +1,16 @@
 import React from "react";
+import TodoDone from "./TodoDone";
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, handleTodoDone }) => {
   return (
     <>
       <li>
-        <b>{todo.name}</b> - {todo.description}
+        <TodoDone
+          todoDone={todo.done}
+          todoId={todo.id}
+          handleTodoDone={handleTodoDone}
+        />{" "}
+        : <b>{todo.name}</b> - {todo.description}
       </li>
     </>
   );

@@ -1,12 +1,13 @@
 import "./App.css";
 import Header from "./components/Header";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Header />
-      <div>
-        <p>Todo List</p>
+      <div className={"App-body"}>
+        <TodoList />
         <p>Add todo</p>
       </div>
     </div>

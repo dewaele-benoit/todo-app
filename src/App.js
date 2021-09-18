@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import TodoList from "./components/TodoList";
-import AddTodo from "./components/AddTodo";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import PageAddTodo from "./pages/PageAddTodo";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -22,13 +23,21 @@ function App() {
     setTodoList(newTodoList);
   };
   return (
-    <div>
-      <Header />
-      <div className={"App-body"}>
-        <TodoList todoList={todoList} handleTodoDone={handleTodoDone} />
-        <AddTodo handleAddTodo={handleAddTodo} />
+    <Router>
+      <div>
+        <Header />
+        <div className={"App-body"}>
+          <Switch>
+            <Route path="/addTodo">
+              <PageAddTodo handleAddTodo={handleAddTodo} />
+            </Route>
+            <Route path="/">
+              <Home todoList={todoList} handleTodoDone={handleTodoDone} />
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
